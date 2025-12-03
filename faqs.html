@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Частые вопросы | Платформа для подготовки к экзаменам ПГНИУ</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-tale-seo-agency.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <!-- Стили для аккордеона FAQ -->
+    <style>
+        /* Стили для аккордеона FAQ */
+        .accordions {
+            margin-bottom: 30px;
+        }
+
+        .accordion {
+            border-bottom: 1px solid #eee;
+        }
+
+        .accordion:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-head {
+            cursor: pointer;
+            padding: 25px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2a2a2a;
+            position: relative;
+            transition: all 0.3s ease;
+            margin: 0;
+        }
+
+        .accordion-head:hover {
+            color: #5b03e4;
+        }
+
+        .accordion-head .icon {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-head .icon i {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-head.is-open {
+            color: #5b03e4;
+        }
+
+        .accordion-head.is-open .icon i {
+            transform: rotate(90deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+        }
+
+        .accordion-body.is-open {
+            max-height: 1000px;
+            transition: max-height 1s ease-in-out;
+        }
+
+        .accordion-body .content {
+            padding: 0 0 25px 0;
+        }
+
+        .accordion-body .content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .accordion-body .content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .accordion-body .content li {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .accordion-body .content li:before {
+            content: "•";
+            color: #5b03e4;
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        /* Стили для формы вопроса */
+        .get-free-quote {
+            background: #fff;
+            padding: 40px;
+            border-radius: 23px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.10);
+            height: 100%;
+        }
+
+        #free-quote {
+            margin: 0;
+            padding: 0;
+            background: none;
+            box-shadow: none;
+        }
+
+        #free-quote .section-heading {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        #free-quote .section-heading h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        #free-quote .section-heading .line-dec {
+            margin: 0 0 20px 0;
+        }
+
+        #free-quote fieldset {
+            margin-bottom: 20px;
+        }
+
+        #free-quote .form-select {
+            width: 100%;
+            height: 46px;
+            border-radius: 23px;
+            background-color: #f9ebff;
+            border: none;
+            outline: none;
+            padding: 0px 15px;
+            font-size: 14px;
+            color: #2a2a2a;
+            font-weight: 600;
+            margin-bottom: 15px;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+        }
+
+        #free-quote button[type="submit"] {
+            background-color: #5b03e4;
+            color: #fff;
+            border: none;
+            height: 46px;
+            width: 100%;
+            border-radius: 23px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        #free-quote button[type="submit"]:hover {
+            background-color: #c03afe;
+            opacity: 0.9;
+        }
+
+        /* Адаптивность для FAQ */
+        @media (max-width: 992px) {
+            .get-free-quote {
+                margin-top: 40px;
+                margin-left: 0;
+            }
+            
+            .accordion-head {
+                font-size: 16px;
+                padding: 20px 0;
+            }
+            
+            .get-free-quote {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .get-free-quote {
+                padding: 25px;
+            }
+            
+            .accordion-head {
+                font-size: 15px;
+                padding: 18px 0;
+            }
+            
+            .accordion-body .content p,
+            .accordion-body .content li {
+                font-size: 14px;
+            }
+            
+            #free-quote .section-heading h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Pre-Header Area Start ***** -->
+    <div class="pre-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-sm-9">
+                    <div class="left-info">
+                        <ul>
+                            <li><a href="#" class="copy-text"><i class="fa fa-phone"></i>+7 (950) 953-62-55</a></li>
+                            <li><a href="#" class="copy-text"><i class="fa fa-envelope"></i>project@gmail.com</a></li>
+                            <li><a href="https://yandex.ru/maps/org/permskiy_gosudarstvenny_natsionalny_issledovatelskiy_universitet/1694653172/?ll=56.188031%2C58.008395&source=serp_navig&z=15.46"><i class="fa fa-map-marker"></i>ул. Букирева, 15, Пермь</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-3">
+                    <div class="social-icons">
+                        <ul>
+                            <li><a href="#"><i class="fab fa-telegram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-vk"></i></a></li>
+                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Pre-Header Area End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="https://www.psu.ru/ru" class="logo">
+                            <img src="assets/images/psu_logo.png" alt="" style="max-width: 76px; margin-top: -8px;">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="index.html">Главная</a></li>
+                            <li class="scroll-to-section"><a href="index.html#services">Преимущества</a></li>
+                            <li class="scroll-to-section"><a href="index.html#projects">События</a></li>
+                            <li class="has-sub">
+                                <a href="javascript:void(0)">Ещё</a>
+                                <ul class="sub-menu">
+                                    <li><a href="about.html">О команде</a></li>
+                                    <li><a href="faqs.html" class="active">Частые вопросы</a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a href="index.html#infos">Информация</a></li>
+                            <li class="scroll-to-section"><a href="index.html#contact">Контакты</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Меню</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <div class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 align-self-center">
+                    <div class="caption header-text">
+                        <h6>ЧАСТЫЕ ВОПРОСЫ</h6>
+                        <div class="line-dec"></div>
+                        <h4>Самые часто задаваемые <em>вопросы</em> и <em>ответы</em> на них</h4>
+                        <p>Здесь вы найдете ответы на все вопросы о нашей платформе подготовки к экзаменам. Если что-то останется непонятным — задайте свой вопрос через форму справа.</p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <img src="assets/images/faqs-image.jpg" alt="Вопросы и ответы" style="border-radius: 23px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="happy-steps">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>4 шага к успешной подготовке с нашей платформой</h2>
+                </div>
+                <div class="col-lg-12">
+                    <div class="steps">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="item">
+                                    <h4>Регистрация и тестирование</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="item">
+                                    <h4>Персональный план подготовки</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="item">
+                                    <h4>Регулярные занятия</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="item last-item">
+                                    <h4>Экзамен и поступление</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="most-asked section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Самые <em>часто</em> задаваемые <span>вопросы</span></h2>
+                        <div class="line-dec"></div>
+                        <p>Ответы на популярные вопросы о нашей платформе подготовки</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="accordions is-first-expanded">
+                        <article class="accordion">
+                            <div class="accordion-head">
+                                <span>Что это за платформа?</span>
+                                <span class="icon">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>Это официальная мультиплатформенная платформа ПГНИУ для помощи ученикам 8-11 классов в подготовке к ОГЭ и ЕГЭ. Она объединяет в себе:</p>
+                                    <ul>
+                                        <li>Мобильное приложение для iOS и Android</li>
+                                        <li>Веб-версию для работы с компьютера</li>
+                                        <li>Функции персонального репетитора и навигатора для поступления</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="accordion">
+                            <div class="accordion-head">
+                                <span>Для кого предназначена эта платформа?</span>
+                                <span class="icon">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>Платформа создана для:</p>
+                                    <ul>
+                                        <li>Учеников 8-9 классов, которые готовятся к ОГЭ и выбирают будущий профиль</li>
+                                        <li>Учеников 10-11 классов, которые интенсивно готовятся к ЕГЭ для поступления в вуз</li>
+                                        <li>Родителей, которые хотят отслеживать прогресс ребенка и помочь ему с поступлением</li>
+                                        <li>Школ-партнеров Пермского края</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="accordion">
+                            <div class="accordion-head">
+                                <span>Как работает система дополнительных баллов?</span>
+                                <span class="icon">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>Независимо от того, используете ли вы мобильное приложение или веб-версию, выполняя задания и участвуя в активностях платформы, вы копите виртуальные баллы. Эти баллы конвертируются в дополнительные конкурсные баллы при подаче документов в ПГНИУ. Прогресс синхронизируется между всеми устройствами.</p>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="accordion">
+                            <div class="accordion-head">
+                                <span>Сколько дополнительных баллов можно получить?</span>
+                                <span class="icon">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>Максимальное количество дополнительных баллов, которые можно получить через платформу, — 10. Конкретное количество зависит от вашей активности и прогресса. Актуальная информация всегда доступна в разделе «Мои баллы» как в веб-версии, так и в мобильном приложении.</p>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="accordion">
+                            <div class="accordion-head">
+                                <span>Как платформа подстраивается под мой уровень?</span>
+                                <span class="icon">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>После начального тестирования алгоритмы анализируют ваши сильные и слабые стороны. Далее система автоматически подбирает задания оптимальной сложности, предлагает больше практики по темам, которые вызывают затруднения, и фокусируется на вашей персональной траектории подготовки. Результаты синхронизируются между всеми устройствами.</p>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="accordion">
+                            <div class="accordion-head">
+                                <span>Платформа платная?</span>
+                                <span class="icon">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>Основной функционал платформы абсолютно бесплатен как в веб-версии, так и в мобильном приложении. Мы верим в доступность качественного образования. На данный момент платных подписок или внутренних покупок нет.</p>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="accordion">
+                            <div class="accordion-head">
+                                <span>Как получить доступ к платформе?</span>
+                                <span class="icon">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>Наша платформа доступна в нескольких форматах:</p>
+                                    <ul>
+                                        <li><strong>Веб-версия:</strong> полный доступ через браузер на любом компьютере</li>
+                                        <li><strong>Мобильное приложение:</strong> доступно в App Store для iOS и Google Play для Android</li>
+                                        <li><strong>Мультиплатформенный доступ:</strong> синхронизация прогресса между всеми устройствами</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="accordion">
+                            <div class="accordion-head">
+                                <span>Какие предметы доступны для подготовки?</span>
+                                <span class="icon">
+                                    <i class="fa fa-chevron-right"></i>
+                                </span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="content">
+                                    <p>Платформа предлагает подготовку по всем основным предметам ЕГЭ и ОГЭ: математике, русскому языку, физике, химии, биологии, истории, обществознанию, английскому языку и другим. Список доступных предметов постоянно расширяется.</p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="get-free-quote">
+                        <form id="free-quote" method="post" action="#">
+                            <div class="section-heading">
+                                <h2>Задать <em>свой вопрос</em></h2>
+                                <div class="line-dec"></div>
+                                <p>Не нашли ответ? Задайте свой вопрос, и мы свяжемся с вами</p>
+                            </div>
+                            
+                            <fieldset>
+                                <input type="text" name="name" id="name" placeholder="Ваше имя" required>
+                            </fieldset>
+                            
+                            <fieldset>
+                                <input type="email" name="email" id="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" placeholder="Ваш E-mail" required>
+                            </fieldset>
+                            
+                            <fieldset>
+                                <input type="tel" name="phone" id="phone" placeholder="Номер телефона" autocomplete="tel">
+                            </fieldset>
+                            
+                            <fieldset>
+                                <select name="question-type" id="question-type" class="form-select">
+                                    <option value="">Тип вопроса</option>
+                                    <option value="technical">Технический вопрос</option>
+                                    <option value="content">Вопрос по содержанию</option>
+                                    <option value="registration">Регистрация и доступ</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                            </fieldset>
+                            
+                            <fieldset>
+                                <textarea name="message" id="message" placeholder="Ваш вопрос..." rows="4"></textarea>
+                            </fieldset>
+                            
+                            <fieldset>
+                                <button type="submit" id="form-submit">Отправить вопрос</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h4>Готовы начать подготовку к экзаменам?<br>Присоединяйтесь к нашей платформе прямо сейчас!</h4>
+                </div>
+                <div class="col-lg-4">
+                    <div class="main-button">
+                        <a href="index.html#contact">Начать обучение</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="col-lg-12">
+                <p>Платформа для подготовки к ОГЭ/ЕГЭ с интеграцией в жизнь ПГНИУ<a href="#"></a>.  
+                <br><a href="https://www.psu.ru/ru" target="_blank">Пермский государственный национальный исследовательский университет</a> ©2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/popup.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/copy_text.js"></script>
+    
+    <!-- Скрипт для аккордеона FAQ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Функция для аккордеона
+            function initAccordion() {
+                const accordionHeads = document.querySelectorAll('.accordion-head');
+                
+                accordionHeads.forEach(head => {
+                    head.addEventListener('click', function() {
+                        const isOpen = this.classList.contains('is-open');
+                        const body = this.nextElementSibling;
+                        
+                        // Закрыть все другие аккордеоны
+                        if (!isOpen) {
+                            document.querySelectorAll('.accordion-head.is-open').forEach(openHead => {
+                                openHead.classList.remove('is-open');
+                                openHead.nextElementSibling.classList.remove('is-open');
+                            });
+                        }
+                        
+                        // Переключить текущий аккордеон
+                        this.classList.toggle('is-open');
+                        body.classList.toggle('is-open');
+                    });
+                });
+                
+                // Открыть первый аккордеон если есть класс is-first-expanded
+                const firstAccordion = document.querySelector('.accordions.is-first-expanded .accordion:first-child .accordion-head');
+                if (firstAccordion) {
+                    firstAccordion.click();
+                }
+            }
+            
+            // Инициализация аккордеона
+            initAccordion();
+            
+            // Обработка формы
+            const contactForm = document.getElementById('free-quote');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Простая валидация
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    
+                    if (!name || !email || !message) {
+                        alert('Пожалуйста, заполните все обязательные поля.');
+                        return;
+                    }
+                    
+                    // Имитация отправки
+                    alert('Спасибо! Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

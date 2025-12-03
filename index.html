@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <title>Подготовка к экзаменам</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-tale-seo-agency.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+	
+  </head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- Модальные окна -->
+  <div id="modal-ege" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-ege')">&times;</span>
+      <h3>Персонализированная подготовка к ЕГЭ и ОГЭ</h3>
+      <div class="modal-body">
+        <div class="modal-icon">
+          <img src="assets/images/services-01.jpg" alt="ЕГЭ и ОГЭ">
+        </div>
+        <div class="modal-text">
+          <p><strong>Индивидуальный подход к каждому ученику:</strong></p>
+          <ul>
+            <li>- Диагностика текущего уровня знаний</li>
+            <li>- Разработка персонального плана подготовки</li>
+            <li>- Фокус на слабых местах и усиление сильных сторон</li>
+            <li>- Регулярный мониторинг прогресса</li>
+          </ul>
+          <p><strong>Формы обучения:</strong></p>
+          <ul>
+            <li>- Индивидуальные занятия с репетитором</li>
+            <li>- Мини-группы (3-5 человек)</li>
+            <li>- Онлайн и оффлайн форматы</li>
+            <li>- Интенсивы перед экзаменами</li>
+          </ul>
+          <div class="modal-actions">
+            <button class="modal-button primary" onclick="openContactForm('Подготовка к ЕГЭ/ОГЭ')">Записаться на консультацию</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-analytics" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-analytics')">&times;</span>
+      <h3>Точный анализ прогресса и рекомендации</h3>
+      <div class="modal-body">
+        <div class="modal-icon">
+          <img src="assets/images/services-02.png" alt="Анализ прогресса">
+        </div>
+        <div class="modal-text">
+          <p><strong>Система мониторинга успеваемости:</strong></p>
+          <ul>
+            <li>- Регулярное тестирование по всем предметам</li>
+            <li>- Детальная аналитика результатов</li>
+            <li>- Сравнение с предыдущими результатами</li>
+            <li>- Прогнозирование баллов на экзамене</li>
+          </ul>
+          <p><strong>Персональные рекомендации:</strong></p>
+          <ul>
+            <li>- Индивидуальные планы улучшения</li>
+            <li>- Рекомендации по времени подготовки</li>
+            <li>- Подбор дополнительных материалов</li>
+            <li>- Советы по эффективному обучению</li>
+          </ul>
+          <div class="modal-actions">
+            <button class="modal-button primary" onclick="openContactForm('Анализ прогресса')">Получить демо-отчет</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-support" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-support')">&times;</span>
+      <h3>Экспертная поддержка от студентов ПГНИУ</h3>
+      <div class="modal-body">
+        <div class="modal-icon">
+          <img src="assets/images/services-03.jpg" alt="Экспертная поддержка">
+        </div>
+        <div class="modal-text">
+          <p><strong>Наставничество от успешных студентов:</strong></p>
+          <ul>
+            <li>- Кураторы - студенты старших курсов ПГНИУ</li>
+            <li>- Опыт успешной сдачи ЕГЭ и поступления</li>
+            <li>- Актуальные знания о требованиях вуза</li>
+            <li>- Поддержка на всех этапах подготовки</li>
+          </ul>
+          <p><strong>Преимущества нашего подхода:</strong></p>
+          <ul>
+            <li>- Неформальное общение и доверительная атмосфера</li>
+            <li>- Практические советы из личного опыта</li>
+            <li>- Помощь в адаптации к университетской жизни</li>
+            <li>- Ответы на все вопросы о поступлении и учебе</li>
+          </ul>
+          <div class="modal-actions">
+            <button class="modal-button primary" onclick="openContactForm('Экспертная поддержка')">Выбрать наставника</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-excursions" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-excursions')">&times;</span>
+      <h3>Экскурсии и дни открытых дверей в университете</h3>
+      <div class="modal-body">
+        <div class="modal-icon">
+          <img src="assets/images/services-04.jpg" alt="Экскурсии">
+        </div>
+        <div class="modal-text">
+          <p><strong>Погружение в университетскую среду:</strong></p>
+          <ul>
+            <li>- Экскурсии по кампусу ПГНИУ</li>
+            <li>- Посещение лекций и практических занятий</li>
+            <li>- Знакомство с преподавателями и студентами</li>
+            <li>- Осмотр лабораторий и научных центров</li>
+          </ul>
+          <p><strong>Мероприятия для абитуриентов:</strong></p>
+          <ul>
+            <li>- Регулярные дни открытых дверей</li>
+            <li>- Мастер-классы от ведущих преподавателей</li>
+            <li>- Встречи с деканами факультетов</li>
+            <li>- Профориентационные тестирования</li>
+          </ul>
+          <div class="modal-actions">
+            <button class="modal-button primary" onclick="openContactForm('Экскурсии в ПГНИУ')">Записаться на экскурсию</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ***** Pre-Header Area Start ***** -->
+  <div class="pre-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-9">
+          <div class="left-info">
+            <ul>
+              <li><a href="#" class = "copy-text"><i class="fa fa-phone"></i>+7 (950) 953-62-55</a></li>
+              <li><a href="#" class = "copy-text"><i class="fa fa-envelope"></i>project@gmail.com</a></li>
+              <li><a href="https://yandex.ru/maps/org/permskiy_gosudarstvenny_natsionalny_issledovatelskiy_universitet/1694653172/?ll=56.188031%2C58.008395&source=serp_navig&z=15.46"><i class="fa fa-map-marker"></i>ул. Букирева, 15, Пермь</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-3">
+          <div class="social-icons">
+            <ul>
+              <li><a href="#"><i class="fab fa-telegram"></i></a></li>
+              <li><a href="#"><i class="fab fa-vk"></i></a></li>
+              <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Pre-Header Area End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="https://www.psu.ru/ru" class="logo">
+                        <img src="assets/images/psu_logo.png" alt="" style="max-width: 76px; margin-top: -8px;">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li class="scroll-to-section"><a href="#top" class="active">Главная</a></li>
+                      <li class="scroll-to-section"><a href="#services">Преимущества</a></li>
+                      <li class="scroll-to-section"><a href="#projects">События</a></li>
+                      <li class="has-sub">
+                          <a href="javascript:void(0)">Ещё</a>
+                          <ul class="sub-menu">
+                              <li><a href="about.html">О команде</a></li>
+                              <li><a href="faqs.html">Частые вопросы</a></li>
+                          </ul>
+                      </li>
+                      <li class="scroll-to-section"><a href="#infos">Информация</a></li>
+                      <li class="scroll-to-section"><a href="#contact">Контакт</a></li>
+                  </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div class="main-banner" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="caption header-text">
+            <h6>THE FUTURE</h6>
+            <div class="line-dec"></div>
+            <h4>Ваш успех&nbsp;-&nbsp;<em>наша миссия</em><br>Начните прямо<span> сейчас!</span></h4>
+            <p>ПГНИУ предлагает современный подход в подготвке к экзаменам</p>
+            <div class="main-button scroll-to-section"><a href="#services">Узнать больше</a></div>
+            <span class = "raise-or"> ИЛИ </span>
+            <div class="second-button"><a href="#">Скачать приложение</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="services section" id="services">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-6">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-heading">
+              <h2>Ключевые <em>особенности</em> нашей <span>платформы</span></h2>
+              <div class="line-dec"></div>
+              <p>Мультиплатформенное решение для <br> учеников 8-11 классов</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-6">
+            <a href="javascript:void(0)" class="service-link" onclick="openModal('modal-ege')">
+              <div class="service-item">
+                <div class="icon">
+                  <img src="assets/images/services-01.jpg" alt="discover SEO" class="templatemo-feature">
+                </div>
+                <h4>Адаптивная подготовка к ЕГЭ и ОГЭ</h4>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-sm-6">
+            <a href="javascript:void(0)" class="service-link" onclick="openModal('modal-analytics')">
+              <div class="service-item">
+                <div class="icon">
+                  <img src="assets/images/services-02.png" alt="data analysis" class="templatemo-feature">
+                </div>
+                <h4>Интеграция в жизнь ПГНИУ</h4>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-sm-6">
+            <a href="javascript:void(0)" class="service-link" onclick="openModal('modal-support')">
+              <div class="service-item">
+                <div class="icon">
+                  <img src="assets/images/services-03.jpg" alt="precise data" class="templatemo-feature">
+                </div>
+                <h4>Поддержка студентов ПГНИУ</h4>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-6 col-sm-6">
+            <a href="javascript:void(0)" class="service-link" onclick="openModal('modal-excursions')">
+              <div class="service-item">
+                <div class="icon">
+                  <img src="assets/images/services-04.jpg" alt="SEO marketing" class="templatemo-feature">
+                </div>
+                <h4>Мероприятия и квесты</h4>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Остальная часть кста остается без изменений -->
+  <div class="projects section" id="projects">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <h2>Актуальные <em style="text-transform: lowercase">события</em><span> ПГНИУ</span></h2>
+            <div class="line-dec"></div>
+            <p>Познакомьтесь с проектами и новостями ПГНИУ</p>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="owl-features owl-carousel">
+            <div class="item">
+              <img src="assets/images/projects-01.jpg" style="height: 270px" alt="">
+              <div class="down-content">
+                <h4>В ПГНИУ стартует IT-мастерская для школьников</h4>
+                <a href="https://vk.com/wall-40202469_44698"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <img src="assets/images/projects-02.jpg" style="height: 270px" alt="">
+              <div class="down-content">
+                <h4>В ПГНИУ начала работу Краевая инженерная школа</h4>
+                <a href="https://vk.com/wall-40202469_44761"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <img src="assets/images/projects-03.jpg" style="height: 270px" alt="">
+              <div class="down-content">
+                <h4>В ПГНИУ появятся Школа кибернетики для школьников и студентов</h4>
+                <a href="https://vk.com/wall-40202469_44589"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <img src="assets/images/projects-04.jpg" style="height: 270px" alt="">
+              <div class="down-content">
+                <h4>ПГНИУ усилил позиции в международном рейтинге</h4>
+                <a href="https://vk.com/wall-40202469_44518"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <img src="assets/images/projects-02.jpg" style="height: 270px" alt="">
+              <div class="down-content">
+                <h4>В ПГНИУ начала работу Краевая инженерная школа</h4>
+                <a href="https://vk.com/wall-40202469_44761"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <img src="assets/images/projects-03.jpg" style="height: 270px" alt="">
+              <div class="down-content">
+                <h4>В ПГНИУ появятся Школа кибернетики для школьников и студентов</h4>
+                <a href="https://vk.com/wall-40202469_44589"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="infos section" id="infos">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="main-content">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="left-image">
+                <img src="assets/images/left-infos.jpg" alt="Счастливые студенты">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="section-heading">
+                <h2>Отзывы <em>наших</em> <span>студентов</span></h2>
+                <div class="line-dec"></div>
+                <p>Реальные истории успеха от тех, кто уже прошел подготовку к экзаменам с нами</p>
+              </div>
+              <div class="testimonials">
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>"Благодаря персональной подготовке с репетиторами из ПГНИУ смог улучшить результаты ЕГЭ по математике на 25 баллов! Поступил на мехмат своей мечты."</p>
+                    <div class="testimonial-author">
+                      <strong>Александр Петров</strong>
+                      <span>Студент механико-математического факультета</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>"Экскурсии в университет помогли окончательно определиться с выбором факультета. Наставник-студент ответил на все мои вопросы о поступлении и учебе."</p>
+                    <div class="testimonial-author">
+                      <strong>Мария Сидорова</strong>
+                      <span>Студентка филологического факультета</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial-item">
+                  <div class="testimonial-content">
+                    <p>"Система анализа прогресса позволила точно определить слабые места и сосредоточиться на них. Регулярные отчеты помогали видеть динамику подготовки."</p>
+                    <div class="testimonial-author">
+                      <strong>Дмитрий Козлов</strong>
+                      <span>Студент химического факультета</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-stats">
+                <div class="row">
+                  <div class="col-4">
+                    <div class="stat-item">
+                      <h3>95%</h3>
+                      <p>абитуриентов выбрали <br> ПГНИУ</p>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="stat-item">
+                      <h3>87%</h3>
+                      <p>улучшили результаты на 15+ баллов</p>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="stat-item">
+                      <h3>75</h3>
+                      <p>средний балл</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="contact-us section" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="contact-us-content">
+            <div class="row">
+              <div class="col-lg-4">
+                <div id="map">
+                  <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0066d72489ca07e275e902a530e81284b6e92cdfb26d159db752fc44b10d0309&amp;source=constructor" width="100%" height="670px" frameborder="0" style="border:0; border-radius: 23px;" allowfullscreen=""></iframe>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <form id="contact-form" action="" method="post">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="section-heading">
+                        <h2 style="text-transform: lowercase"><em style="text-transform: capitalize">Для</em> связи с<span> нами</span></h2>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <fieldset>
+                        <input type="name" name="name" id="name" placeholder="Имя" autocomplete="on" required>
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-6">
+                      <fieldset>
+                        <input type="surname" name="surname" id="surname" placeholder="Фамилия" autocomplete="on" required>
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-6">
+                      <fieldset>
+                        <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="E-mail..." required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-6">
+                      <fieldset>
+                        <input type="subject" name="subject" id="subject" placeholder="Место проживание" autocomplete="on" >
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <textarea name="message" id="message" placeholder="Какой вопрос?"></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="orange-button">Отправить сообщение</button>
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
+                <div class="more-info">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="info-item">
+                        <i class="fa fa-phone"></i>
+                        <h4><a href="#">+7 (950) 953-62-55</a></h4>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="info-item">
+                        <i class="fa fa-envelope"></i>
+                        <h4><a href="#">project@gmail.com</a></h4>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="info-item">
+                        <i class="fa fa-map-marker"></i>
+                        <h4><a href="#">ул. Букирева, 15, Пермь</a></h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="col-lg-12">
+        <p>Сайт создан в учебных целях<a href="#"></a>.  
+        
+        <br><a href="https://www.psu.ru/ru" target="_blank">ПГНИУ</a>©2025</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/tabs.js"></script>
+  <script src="assets/js/popup.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script src="assets/js/copy_text.js"></script>
+  <script src="assets/js/mod_win.js"></script>
+
+
+  </body>
+
+</html>
