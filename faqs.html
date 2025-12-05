@@ -17,104 +17,271 @@
     <!-- Стили для аккордеона FAQ -->
     <style>
         /* Стили для аккордеона FAQ */
+        .faq-accordion {
+            margin: 40px 0;
+        }
+
         .accordions {
-            margin-bottom: 30px;
+            width: 100%;
+            max-width: 100%;
         }
 
         .accordion {
-            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            background: white;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(91, 3, 228, 0.1);
         }
 
-        .accordion:last-child {
-            border-bottom: none;
+        .accordion:hover {
+            box-shadow: 0 5px 25px rgba(91, 3, 228, 0.12);
+            transform: translateY(-2px);
+            border-color: rgba(91, 3, 228, 0.2);
         }
 
         .accordion-head {
+            padding: 22px 30px;
+            background: linear-gradient(135deg, #f9f9ff 0%, #f2edff 100%);
             cursor: pointer;
-            padding: 25px 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-bottom: 3px solid transparent;
             position: relative;
-            transition: all 0.3s ease;
-            margin: 0;
+        }
+
+        .accordion-head:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #5b03e4, #c03afe);
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .accordion-head:hover {
-            color: #5b03e4;
+            background: linear-gradient(135deg, #f2edff 0%, #e8deff 100%);
         }
 
-        .accordion-head .icon {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-head .icon i {
-            transition: transform 0.3s ease;
+        .accordion-head:hover:after {
+            width: 100%;
         }
 
         .accordion-head.is-open {
+            background: linear-gradient(135deg, #5b03e4 0%, #7d2bff 100%);
+            border-bottom-color: #5b03e4;
+        }
+
+        .accordion-head.is-open:after {
+            width: 100%;
+            background: white;
+        }
+
+        .accordion-head.is-open:hover {
+            background: linear-gradient(135deg, #4a02c9 0%, #6c20ff 100%);
+        }
+
+        .accordion-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #2a2a2a;
+            flex: 1;
+            margin: 0;
+            padding-right: 20px;
+            transition: all 0.3s ease;
+            line-height: 1.4;
+        }
+
+        .accordion-head:hover .accordion-title {
             color: #5b03e4;
         }
 
-        .accordion-head.is-open .icon i {
+        .accordion-head.is-open .accordion-title {
+            color: white;
+        }
+
+        .accordion-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(91, 3, 228, 0.2);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            flex-shrink: 0;
+        }
+
+        .accordion-head:hover .accordion-icon {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(91, 3, 228, 0.3);
+        }
+
+        .accordion-head.is-open .accordion-icon {
+            background: white;
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 5px 15px rgba(91, 3, 228, 0.4);
+        }
+
+        .accordion-icon i {
+            font-size: 12px;
+            color: #5b03e4;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .accordion-head.is-open .accordion-icon i {
+            color: #5b03e4;
             transform: rotate(90deg);
         }
 
         .accordion-body {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+            transform: translateY(-10px);
+            background: white;
         }
 
         .accordion-body.is-open {
-            max-height: 1000px;
-            transition: max-height 1s ease-in-out;
+            max-height: 2000px;
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .accordion-body .content {
-            padding: 0 0 25px 0;
-        }
-
-        .accordion-body .content p {
+        .accordion-content {
+            padding: 0;
+            color: #555;
+            line-height: 1.7;
             font-size: 16px;
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 15px;
+            animation: contentAppear 0.4s ease-out 0.1s both;
         }
 
-        .accordion-body .content ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
+        @keyframes contentAppear {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .accordion-body .content li {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 8px;
+        .accordion-content p {
+            margin-bottom: 18px;
+            padding: 0 30px;
+            padding-top: 25px;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .accordion-content ul {
+            padding: 0 30px 25px 45px;
+            margin-bottom: 15px;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
+
+        .accordion-content li {
+            margin-bottom: 12px;
             position: relative;
-            padding-left: 10px;
+            padding-left: 5px;
+            animation: slideInLeft 0.4s ease-out;
+            animation-fill-mode: both;
         }
 
-        .accordion-body .content li:before {
-            content: "•";
+        .accordion-content li:nth-child(1) { animation-delay: 0.1s; }
+        .accordion-content li:nth-child(2) { animation-delay: 0.2s; }
+        .accordion-content li:nth-child(3) { animation-delay: 0.3s; }
+        .accordion-content li:nth-child(4) { animation-delay: 0.4s; }
+        .accordion-content li:nth-child(5) { animation-delay: 0.5s; }
+        .accordion-content li:nth-child(6) { animation-delay: 0.6s; }
+        .accordion-content li:nth-child(7) { animation-delay: 0.7s; }
+        .accordion-content li:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .accordion-content li:before {
+            content: "▶";
             color: #5b03e4;
-            font-weight: bold;
+            font-size: 12px;
             position: absolute;
-            left: -15px;
+            left: -18px;
+            top: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content li:hover:before {
+            transform: translateX(3px);
+        }
+
+        .accordion-content strong {
+            color: #333;
+            font-weight: 700;
+        }
+
+        /* Эффект нажатия */
+        .accordion-head:active {
+            transform: scale(0.99);
+            transition: transform 0.1s ease;
+        }
+
+        .accordion-head.is-open:active {
+            transform: scale(0.99) translateY(0);
         }
 
         /* Стили для формы вопроса */
         .get-free-quote {
-            background: #fff;
+            background: linear-gradient(135deg, #f9f9ff 0%, #f2edff 100%);
             padding: 40px;
-            border-radius: 23px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.10);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(91, 3, 228, 0.1);
             height: 100%;
+            border: 1px solid rgba(91, 3, 228, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .get-free-quote:hover {
+            box-shadow: 0 15px 40px rgba(91, 3, 228, 0.15);
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         #free-quote {
@@ -126,57 +293,128 @@
 
         #free-quote .section-heading {
             text-align: left;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         #free-quote .section-heading h2 {
-            font-size: 24px;
+            font-size: 26px;
             margin-bottom: 15px;
+            background: linear-gradient(90deg, #5b03e4, #c03afe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         #free-quote .section-heading .line-dec {
-            margin: 0 0 20px 0;
+            margin: 0 0 25px 0;
+            width: 60px;
+            background: linear-gradient(90deg, #5b03e4, #c03afe);
+            height: 3px;
         }
 
         #free-quote fieldset {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            animation: slideInRight 0.4s ease-out;
+            animation-fill-mode: both;
+        }
+
+        #free-quote fieldset:nth-child(1) { animation-delay: 0.3s; }
+        #free-quote fieldset:nth-child(2) { animation-delay: 0.4s; }
+        #free-quote fieldset:nth-child(3) { animation-delay: 0.5s; }
+        #free-quote fieldset:nth-child(4) { animation-delay: 0.6s; }
+        #free-quote fieldset:nth-child(5) { animation-delay: 0.7s; }
+        #free-quote fieldset:nth-child(6) { animation-delay: 0.8s; }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        #free-quote input,
+        #free-quote textarea,
+        #free-quote .form-select {
+            width: 100%;
+            border-radius: 15px;
+            background-color: white;
+            border: 2px solid #e6e6ff;
+            outline: none;
+            padding: 14px 20px;
+            font-size: 15px;
+            color: #2a2a2a;
+            font-weight: 500;
+            margin-bottom: 0;
+            transition: all 0.3s ease;
+        }
+
+        #free-quote input:focus,
+        #free-quote textarea:focus,
+        #free-quote .form-select:focus {
+            border-color: #5b03e4;
+            background-color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(91, 3, 228, 0.12);
         }
 
         #free-quote .form-select {
-            width: 100%;
-            height: 46px;
-            border-radius: 23px;
-            background-color: #f9ebff;
-            border: none;
-            outline: none;
-            padding: 0px 15px;
-            font-size: 14px;
-            color: #2a2a2a;
-            font-weight: 600;
-            margin-bottom: 15px;
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b03e4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 15px;
-        }
-
-        #free-quote button[type="submit"] {
-            background-color: #5b03e4;
-            color: #fff;
-            border: none;
-            height: 46px;
-            width: 100%;
-            border-radius: 23px;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
+            background-position: right 20px center;
+            background-size: 16px;
             cursor: pointer;
         }
 
+        #free-quote textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        #free-quote button[type="submit"] {
+            background: linear-gradient(90deg, #5b03e4, #c03afe);
+            color: #fff;
+            border: none;
+            height: 52px;
+            width: 100%;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
         #free-quote button[type="submit"]:hover {
-            background-color: #c03afe;
-            opacity: 0.9;
+            background: linear-gradient(90deg, #4a02c9, #b02aed);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(91, 3, 228, 0.25);
+        }
+
+        #free-quote button[type="submit"]:active {
+            transform: translateY(-1px);
+            transition: transform 0.1s ease;
+        }
+
+        #free-quote button[type="submit"]:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        #free-quote button[type="submit"]:hover:after {
+            left: 100%;
         }
 
         /* Адаптивность для FAQ */
@@ -187,8 +425,22 @@
             }
             
             .accordion-head {
+                padding: 20px;
                 font-size: 16px;
-                padding: 20px 0;
+            }
+            
+            .accordion-title {
+                font-size: 16px;
+            }
+            
+            .accordion-content p,
+            .accordion-content ul {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .accordion-content li {
+                font-size: 15px;
             }
             
             .get-free-quote {
@@ -202,17 +454,37 @@
             }
             
             .accordion-head {
+                padding: 18px;
                 font-size: 15px;
-                padding: 18px 0;
             }
             
-            .accordion-body .content p,
-            .accordion-body .content li {
+            .accordion-title {
+                font-size: 15px;
+            }
+            
+            .accordion-content p,
+            .accordion-content li {
                 font-size: 14px;
             }
             
+            .accordion-content ul {
+                padding-left: 35px;
+            }
+            
             #free-quote .section-heading h2 {
-                font-size: 20px;
+                font-size: 22px;
+            }
+            
+            #free-quote input,
+            #free-quote textarea,
+            #free-quote .form-select {
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+            
+            #free-quote button[type="submit"] {
+                height: 48px;
+                font-size: 16px;
             }
         }
     </style>
@@ -351,7 +623,7 @@
         </div>
     </div>
 
-    <div class="most-asked section">
+    <div class="most-asked section faq-accordion">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -364,16 +636,16 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="accordions is-first-expanded">
+                    <div class="accordions">
                         <article class="accordion">
                             <div class="accordion-head">
-                                <span>Что это за платформа?</span>
-                                <span class="icon">
+                                <h4 class="accordion-title">Что это за платформа?</h4>
+                                <div class="accordion-icon">
                                     <i class="fa fa-chevron-right"></i>
-                                </span>
+                                </div>
                             </div>
                             <div class="accordion-body">
-                                <div class="content">
+                                <div class="accordion-content">
                                     <p>Это официальная мультиплатформенная платформа ПГНИУ для помощи ученикам 8-11 классов в подготовке к ОГЭ и ЕГЭ. Она объединяет в себе:</p>
                                     <ul>
                                         <li>Мобильное приложение для iOS и Android</li>
@@ -386,13 +658,13 @@
                         
                         <article class="accordion">
                             <div class="accordion-head">
-                                <span>Для кого предназначена эта платформа?</span>
-                                <span class="icon">
+                                <h4 class="accordion-title">Для кого предназначена эта платформа?</h4>
+                                <div class="accordion-icon">
                                     <i class="fa fa-chevron-right"></i>
-                                </span>
+                                </div>
                             </div>
                             <div class="accordion-body">
-                                <div class="content">
+                                <div class="accordion-content">
                                     <p>Платформа создана для:</p>
                                     <ul>
                                         <li>Учеников 8-9 классов, которые готовятся к ОГЭ и выбирают будущий профиль</li>
@@ -406,13 +678,13 @@
                         
                         <article class="accordion">
                             <div class="accordion-head">
-                                <span>Как работает система дополнительных баллов?</span>
-                                <span class="icon">
+                                <h4 class="accordion-title">Как работает система дополнительных баллов?</h4>
+                                <div class="accordion-icon">
                                     <i class="fa fa-chevron-right"></i>
-                                </span>
+                                </div>
                             </div>
                             <div class="accordion-body">
-                                <div class="content">
+                                <div class="accordion-content">
                                     <p>Независимо от того, используете ли вы мобильное приложение или веб-версию, выполняя задания и участвуя в активностях платформы, вы копите виртуальные баллы. Эти баллы конвертируются в дополнительные конкурсные баллы при подаче документов в ПГНИУ. Прогресс синхронизируется между всеми устройствами.</p>
                                 </div>
                             </div>
@@ -420,13 +692,13 @@
                         
                         <article class="accordion">
                             <div class="accordion-head">
-                                <span>Сколько дополнительных баллов можно получить?</span>
-                                <span class="icon">
+                                <h4 class="accordion-title">Сколько дополнительных баллов можно получить?</h4>
+                                <div class="accordion-icon">
                                     <i class="fa fa-chevron-right"></i>
-                                </span>
+                                </div>
                             </div>
                             <div class="accordion-body">
-                                <div class="content">
+                                <div class="accordion-content">
                                     <p>Максимальное количество дополнительных баллов, которые можно получить через платформу, — 10. Конкретное количество зависит от вашей активности и прогресса. Актуальная информация всегда доступна в разделе «Мои баллы» как в веб-версии, так и в мобильном приложении.</p>
                                 </div>
                             </div>
@@ -434,13 +706,13 @@
                         
                         <article class="accordion">
                             <div class="accordion-head">
-                                <span>Как платформа подстраивается под мой уровень?</span>
-                                <span class="icon">
+                                <h4 class="accordion-title">Как платформа подстраивается под мой уровень?</h4>
+                                <div class="accordion-icon">
                                     <i class="fa fa-chevron-right"></i>
-                                </span>
+                                </div>
                             </div>
                             <div class="accordion-body">
-                                <div class="content">
+                                <div class="accordion-content">
                                     <p>После начального тестирования алгоритмы анализируют ваши сильные и слабые стороны. Далее система автоматически подбирает задания оптимальной сложности, предлагает больше практики по темам, которые вызывают затруднения, и фокусируется на вашей персональной траектории подготовки. Результаты синхронизируются между всеми устройствами.</p>
                                 </div>
                             </div>
@@ -448,13 +720,13 @@
                         
                         <article class="accordion">
                             <div class="accordion-head">
-                                <span>Платформа платная?</span>
-                                <span class="icon">
+                                <h4 class="accordion-title">Платформа платная?</h4>
+                                <div class="accordion-icon">
                                     <i class="fa fa-chevron-right"></i>
-                                </span>
+                                </div>
                             </div>
                             <div class="accordion-body">
-                                <div class="content">
+                                <div class="accordion-content">
                                     <p>Основной функционал платформы абсолютно бесплатен как в веб-версии, так и в мобильном приложении. Мы верим в доступность качественного образования. На данный момент платных подписок или внутренних покупок нет.</p>
                                 </div>
                             </div>
@@ -462,13 +734,13 @@
                         
                         <article class="accordion">
                             <div class="accordion-head">
-                                <span>Как получить доступ к платформе?</span>
-                                <span class="icon">
+                                <h4 class="accordion-title">Как получить доступ к платформе?</h4>
+                                <div class="accordion-icon">
                                     <i class="fa fa-chevron-right"></i>
-                                </span>
+                                </div>
                             </div>
                             <div class="accordion-body">
-                                <div class="content">
+                                <div class="accordion-content">
                                     <p>Наша платформа доступна в нескольких форматах:</p>
                                     <ul>
                                         <li><strong>Веб-версия:</strong> полный доступ через браузер на любом компьютере</li>
@@ -481,13 +753,13 @@
                         
                         <article class="accordion">
                             <div class="accordion-head">
-                                <span>Какие предметы доступны для подготовки?</span>
-                                <span class="icon">
+                                <h4 class="accordion-title">Какие предметы доступны для подготовки?</h4>
+                                <div class="accordion-icon">
                                     <i class="fa fa-chevron-right"></i>
-                                </span>
+                                </div>
                             </div>
                             <div class="accordion-body">
-                                <div class="content">
+                                <div class="accordion-content">
                                     <p>Платформа предлагает подготовку по всем основным предметам ЕГЭ и ОГЭ: математике, русскому языку, физике, химии, биологии, истории, обществознанию, английскому языку и другим. Список доступных предметов постоянно расширяется.</p>
                                 </div>
                             </div>
@@ -578,62 +850,31 @@
     
     <!-- Скрипт для аккордеона FAQ -->
     <script>
+        // Чистый JavaScript для аккордеона (без конфликтов с jQuery)
         document.addEventListener('DOMContentLoaded', function() {
-            // Функция для аккордеона
-            function initAccordion() {
-                const accordionHeads = document.querySelectorAll('.accordion-head');
-                
-                accordionHeads.forEach(head => {
-                    head.addEventListener('click', function() {
-                        const isOpen = this.classList.contains('is-open');
-                        const body = this.nextElementSibling;
-                        
-                        // Закрыть все другие аккордеоны
-                        if (!isOpen) {
-                            document.querySelectorAll('.accordion-head.is-open').forEach(openHead => {
-                                openHead.classList.remove('is-open');
-                                openHead.nextElementSibling.classList.remove('is-open');
-                            });
-                        }
-                        
-                        // Переключить текущий аккордеон
-                        this.classList.toggle('is-open');
-                        body.classList.toggle('is-open');
-                    });
-                });
-                
-                // Открыть первый аккордеон если есть класс is-first-expanded
-                const firstAccordion = document.querySelector('.accordions.is-first-expanded .accordion:first-child .accordion-head');
-                if (firstAccordion) {
-                    firstAccordion.click();
-                }
-            }
+            console.log('Инициализация FAQ аккордеона...');
             
-            // Инициализация аккордеона
-            initAccordion();
+            // Находим все заголовки аккордеонов
+            const accordionHeads = document.querySelectorAll('.accordion-head');
+            console.log('Найдено элементов аккордеона:', accordionHeads.length);
             
-            // Обработка формы
-            const contactForm = document.getElementById('free-quote');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Простая валидация
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const message = document.getElementById('message').value;
-                    
-                    if (!name || !email || !message) {
-                        alert('Пожалуйста, заполните все обязательные поля.');
-                        return;
-                    }
-                    
-                    // Имитация отправки
-                    alert('Спасибо! Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время.');
-                    contactForm.reset();
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+            // Добавляем обработчики клика
+            accordionHeads.forEach(head => {
+                // Удаляем старые обработчики, чтобы избежать дублирования
+                head.removeEventListener('click', handleAccordionClick);
+                head.addEventListener('click', handleAccordionClick);
+            });
+            
+            // Функция обработки клика по аккордеону
+            function handleAccordionClick(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                console.log('Клик по аккордеону');
+                const isOpen = this.classList.contains('is-open');
+                const body = this.nextElementSibling;
+                const icon = this.querySelector('.accordion-icon i');
+                
+                // Закрываем все другие аккордеоны
+                if (!isOpen) {
+                    document.querySelectorAll('.accordion-head.is-open
