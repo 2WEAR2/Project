@@ -16,6 +16,18 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <!-- Стили для аккордеона FAQ -->
     <style>
+        /* Запрет выделения текста в вопросах */
+        .accordion-head {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        
+        .accordion-title {
+            cursor: default;
+        }
+
         /* Стили для аккордеона FAQ */
         .faq-accordion {
             margin: 40px 0;
@@ -88,7 +100,7 @@
         }
 
         .accordion-title {
-            font-size: 17px;
+            font-size: 16px; /* Уменьшен размер шрифта */
             font-weight: 700;
             color: #2a2a2a;
             flex: 1;
@@ -96,6 +108,7 @@
             padding-right: 20px;
             transition: all 0.3s ease;
             line-height: 1.4;
+            padding-left: 10px; /* Отступ от края */
         }
 
         .accordion-head:hover .accordion-title {
@@ -159,8 +172,8 @@
         .accordion-content {
             padding: 0;
             color: #555;
-            line-height: 1.7;
-            font-size: 16px;
+            line-height: 1.6; /* Улучшен межстрочный интервал */
+            font-size: 14px; /* Уменьшен размер шрифта ответов */
             animation: contentAppear 0.4s ease-out 0.1s both;
         }
 
@@ -176,24 +189,25 @@
         }
 
         .accordion-content p {
-            margin-bottom: 18px;
-            padding: 0 30px;
-            padding-top: 25px;
+            margin-bottom: 15px; /* Уменьшен отступ */
+            padding: 0 40px; /* Увеличен отступ от края */
+            padding-top: 20px; /* Уменьшен верхний отступ */
             animation: fadeInUp 0.5s ease-out;
         }
 
         .accordion-content ul {
-            padding: 0 30px 25px 45px;
+            padding: 0 40px 20px 50px; /* Увеличен отступ от края */
             margin-bottom: 15px;
             animation: fadeInUp 0.6s ease-out 0.1s both;
         }
 
         .accordion-content li {
-            margin-bottom: 12px;
+            margin-bottom: 10px; /* Уменьшен отступ */
             position: relative;
             padding-left: 5px;
             animation: slideInLeft 0.4s ease-out;
             animation-fill-mode: both;
+            font-size: 14px; /* Уменьшен размер шрифта в списках */
         }
 
         .accordion-content li:nth-child(1) { animation-delay: 0.1s; }
@@ -230,10 +244,10 @@
         .accordion-content li:before {
             content: "▶";
             color: #5b03e4;
-            font-size: 12px;
+            font-size: 10px; /* Уменьшен размер маркера */
             position: absolute;
             left: -18px;
-            top: 2px;
+            top: 1px;
             transition: transform 0.3s ease;
         }
 
@@ -244,6 +258,7 @@
         .accordion-content strong {
             color: #333;
             font-weight: 700;
+            font-size: 14px; /* Уменьшен размер жирного текста */
         }
 
         /* Эффект нажатия */
@@ -297,7 +312,7 @@
         }
 
         #free-quote .section-heading h2 {
-            font-size: 26px;
+            font-size: 24px; /* Уменьшен размер заголовка формы */
             margin-bottom: 15px;
             background: linear-gradient(90deg, #5b03e4, #c03afe);
             -webkit-background-clip: text;
@@ -313,7 +328,7 @@
         }
 
         #free-quote fieldset {
-            margin-bottom: 25px;
+            margin-bottom: 20px; /* Уменьшен отступ между полями */
             animation: slideInRight 0.4s ease-out;
             animation-fill-mode: both;
         }
@@ -345,7 +360,7 @@
             border: 2px solid #e6e6ff;
             outline: none;
             padding: 14px 20px;
-            font-size: 15px;
+            font-size: 14px; /* Уменьшен размер шрифта в форме */
             color: #2a2a2a;
             font-weight: 500;
             margin-bottom: 0;
@@ -379,11 +394,11 @@
             background: linear-gradient(90deg, #5b03e4, #c03afe);
             color: #fff;
             border: none;
-            height: 52px;
+            height: 48px; /* Уменьшена высота кнопки */
             width: 100%;
             border-radius: 15px;
-            font-weight: 700;
-            font-size: 17px;
+            font-weight: 600; /* Уменьшена жирность */
+            font-size: 15px; /* Уменьшен размер шрифта */
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
@@ -417,6 +432,27 @@
             left: 100%;
         }
 
+        /* Уменьшение текста в других элементах страницы */
+        .happy-steps h2 {
+            font-size: 26px; /* Уменьшен заголовок шагов */
+        }
+        
+        .happy-steps .item h4 {
+            font-size: 16px; /* Уменьшен текст в шагах */
+        }
+        
+        .most-asked .section-heading h2 {
+            font-size: 26px; /* Уменьшен заголовок FAQ */
+        }
+        
+        .most-asked .section-heading p {
+            font-size: 16px; /* Уменьшен подзаголовок FAQ */
+        }
+        
+        .cta h4 {
+            font-size: 22px; /* Уменьшен текст в CTA */
+        }
+
         /* Адаптивность для FAQ */
         @media (max-width: 992px) {
             .get-free-quote {
@@ -425,26 +461,35 @@
             }
             
             .accordion-head {
-                padding: 20px;
+                padding: 18px 25px; /* Уменьшен отступ на мобильных */
                 font-size: 16px;
             }
             
             .accordion-title {
-                font-size: 16px;
+                font-size: 15px; /* Еще меньше на планшетах */
+                padding-left: 8px;
             }
             
             .accordion-content p,
             .accordion-content ul {
-                padding-left: 20px;
-                padding-right: 20px;
+                padding-left: 30px; /* Уменьшен отступ на планшетах */
+                padding-right: 30px;
+            }
+            
+            .accordion-content p {
+                font-size: 13px; /* Еще меньше на планшетах */
             }
             
             .accordion-content li {
-                font-size: 15px;
+                font-size: 13px;
             }
             
             .get-free-quote {
                 padding: 30px;
+            }
+            
+            #free-quote .section-heading h2 {
+                font-size: 22px;
             }
         }
 
@@ -454,37 +499,59 @@
             }
             
             .accordion-head {
-                padding: 18px;
+                padding: 16px 20px; /* Еще меньше на мобильных */
                 font-size: 15px;
             }
             
             .accordion-title {
-                font-size: 15px;
+                font-size: 14px;
+                padding-left: 5px;
             }
             
-            .accordion-content p,
+            .accordion-content p {
+                font-size: 12px; /* Минимальный размер на мобильных */
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+            
             .accordion-content li {
-                font-size: 14px;
+                font-size: 12px;
             }
             
             .accordion-content ul {
-                padding-left: 35px;
+                padding-left: 30px; /* Уменьшен отступ на мобильных */
             }
             
             #free-quote .section-heading h2 {
-                font-size: 22px;
+                font-size: 20px;
             }
             
             #free-quote input,
             #free-quote textarea,
             #free-quote .form-select {
                 padding: 12px 16px;
-                font-size: 14px;
+                font-size: 13px;
             }
             
             #free-quote button[type="submit"] {
-                height: 48px;
-                font-size: 16px;
+                height: 44px;
+                font-size: 14px;
+            }
+            
+            .happy-steps h2 {
+                font-size: 22px;
+            }
+            
+            .happy-steps .item h4 {
+                font-size: 14px;
+            }
+            
+            .most-asked .section-heading h2 {
+                font-size: 22px;
+            }
+            
+            .cta h4 {
+                font-size: 18px;
             }
         }
     </style>
@@ -548,6 +615,8 @@
                             <li class="scroll-to-section"><a href="index.html">Главная</a></li>
                             <li class="scroll-to-section"><a href="index.html#services">Преимущества</a></li>
                             <li class="scroll-to-section"><a href="index.html#projects">События</a></li>
+                            <li class="scroll-to-section"><a href="index.html#infos">Отзывы</a></li>
+                            <li class="scroll-to-section"><a href="index.html#contact">Контакты</a></li>
                             <li class="has-sub">
                                 <a href="javascript:void(0)">Ещё</a>
                                 <ul class="sub-menu">
@@ -555,8 +624,6 @@
                                     <li><a href="faqs.html" class="active">Частые вопросы</a></li>
                                 </ul>
                             </li>
-                            <li class="scroll-to-section"><a href="index.html#infos">Информация</a></li>
-                            <li class="scroll-to-section"><a href="index.html#contact">Контакты</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Меню</span>
@@ -760,7 +827,7 @@
                             </div>
                             <div class="accordion-body">
                                 <div class="accordion-content">
-                                    <p>Платформа предлагает подготовку по всем основным предметам ЕГЭ и ОГЭ: математике, русскому языку, физике, химии, биологии, истории, обществознанию, английскому языку и другим. Список доступных предметов постоянно расширяется.</p>
+                                    <p>Платформа предлагает подготовку по следующим предметам ЕГЭ и ОГЭ: математике, русскому языку, физике, химии, биологии. Список доступных предметов постоянно расширяется.</p>
                                 </div>
                             </div>
                         </article>
@@ -828,13 +895,14 @@
     </div>
 
     <footer>
-        <div class="container">
-            <div class="col-lg-12">
-                <p>Платформа для подготовки к ОГЭ/ЕГЭ с интеграцией в жизнь ПГНИУ<a href="#"></a>.  
-                <br><a href="https://www.psu.ru/ru" target="_blank">Пермский государственный национальный исследовательский университет</a> ©2025</p>
-            </div>
-        </div>
-    </footer>
+    <div class="container">
+      <div class="col-lg-12">
+        <p>Сайт создан в учебных целях<a href="#"></a>.  
+        
+        <br><a href="https://www.psu.ru/ru" target="_blank">ПГНИУ</a>©2025</p>
+      </div>
+    </div>
+  </footer>
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
@@ -848,33 +916,5 @@
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/copy_text.js"></script>
     
-    <!-- Скрипт для аккордеона FAQ -->
-    <script>
-        // Чистый JavaScript для аккордеона (без конфликтов с jQuery)
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Инициализация FAQ аккордеона...');
-            
-            // Находим все заголовки аккордеонов
-            const accordionHeads = document.querySelectorAll('.accordion-head');
-            console.log('Найдено элементов аккордеона:', accordionHeads.length);
-            
-            // Добавляем обработчики клика
-            accordionHeads.forEach(head => {
-                // Удаляем старые обработчики, чтобы избежать дублирования
-                head.removeEventListener('click', handleAccordionClick);
-                head.addEventListener('click', handleAccordionClick);
-            });
-            
-            // Функция обработки клика по аккордеону
-            function handleAccordionClick(event) {
-                event.preventDefault();
-                event.stopPropagation();
-                
-                console.log('Клик по аккордеону');
-                const isOpen = this.classList.contains('is-open');
-                const body = this.nextElementSibling;
-                const icon = this.querySelector('.accordion-icon i');
-                
-                // Закрываем все другие аккордеоны
-                if (!isOpen) {
-                    document.querySelectorAll('.accordion-head.is-open
+</body>
+</html>

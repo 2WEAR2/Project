@@ -1,6 +1,106 @@
 (function ($) {
     "use strict";
 
+    // ==================== ФУНКЦИЯ ДЛЯ ДОБАВЛЕНИЯ СТИЛЕЙ ====================
+    function addAccordionStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            /* Стили для ответов в аккордеоне */
+            .accordion-content {
+                padding: 0;
+                color: #555;
+                line-height: 1.6;
+                font-size: 14px !important;
+                animation: contentAppear 0.4s ease-out 0.1s both;
+            }
+            
+            .accordion-content p {
+                margin-bottom: 15px;
+                padding: 0 40px;
+                padding-top: 20px;
+                animation: fadeInUp 0.5s ease-out;
+                font-size: 14px !important;
+            }
+            
+            .accordion-content ul {
+                padding: 0 40px 20px 50px;
+                margin-bottom: 15px;
+                animation: fadeInUp 0.6s ease-out 0.1s both;
+            }
+            
+            .accordion-content li {
+                margin-bottom: 10px;
+                position: relative;
+                padding-left: 5px;
+                animation: slideInLeft 0.4s ease-out;
+                animation-fill-mode: both;
+                font-size: 14px !important;
+            }
+            
+            .accordion-content strong {
+                color: #333;
+                font-weight: 700;
+                font-size: 14px !important;
+            }
+            
+            /* Анимации */
+            @keyframes contentAppear {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes slideInLeft {
+                from {
+                    opacity: 0;
+                    transform: translateX(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            
+            /* Адаптивность */
+            @media (max-width: 992px) {
+                .accordion-content p {
+                    font-size: 13px !important;
+                }
+                .accordion-content li {
+                    font-size: 13px !important;
+                }
+            }
+            
+            @media (max-width: 767px) {
+                .accordion-content p {
+                    font-size: 12px !important;
+                }
+                .accordion-content li {
+                    font-size: 12px !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // ==================== ОСНОВНЫЕ ФУНКЦИИ ====================
+    
     // Page loading animation
     $(window).on('load', function() {
         $('#js-preloader').addClass('loaded');
@@ -49,10 +149,10 @@
         }
     });
 
-    // Улучшенный аккордеон с плавной анимацией и вращением стрелочки
+    // ==================== УЛУЧШЕННЫЙ АККОРДЕОН ====================
     const Accordion = {
         settings: {
-            first_expanded: false, // ИЗМЕНИЛ на false - не открывать первый
+            first_expanded: false,
             toggle: false,
             duration: 300,
             easing: 'ease-in-out'
@@ -105,6 +205,12 @@
                 content.style.opacity = '1';
                 content.classList.add('is-open');
                 
+                // Добавляем анимацию для контента
+                const contentElements = content.querySelectorAll('.accordion-content p, .accordion-content li');
+                contentElements.forEach((el, index) => {
+                    el.style.animationDelay = `${index * 0.05}s`;
+                });
+                
                 setTimeout(() => {
                     content.style.height = 'auto';
                     content.style.overflow = 'visible';
@@ -146,10 +252,6 @@
 
         init: function(el) {
             const _this = this;
-
-            // УБРАЛ автоматическое определение из класса
-            // Пусть всегда начинается с закрытого состояния
-            let is_first_expanded = false; // Всегда false
             let is_toggle = el.classList.contains("is-toggle") ? true : _this.settings.toggle;
 
             const all_toggles = el.getElementsByClassName("accordion-head");
@@ -172,7 +274,7 @@
                 if (arrowIcon) {
                     arrowIcon.style.transition = `transform ${_this.settings.duration}ms ${_this.settings.easing}`;
                     arrowIcon.style.display = 'inline-block';
-                    arrowIcon.style.transform = 'rotate(0deg)'; // Стрелка вниз
+                    arrowIcon.style.transform = 'rotate(0deg)';
                 }
                 
                 // Добавляем обработчик клика
@@ -220,19 +322,18 @@
                         this.style.backgroundColor = '';
                     }
                 });
-
-                // УБРАЛ автоматическое открытие первого аккордеона
-                // Теперь первый аккордеон не будет открываться автоматически
             }
             
-            // Если нужно оставить возможность открыть первый через класс, но по умолчанию закрыт:
-            // Удаляем класс is-first-expanded из элемента, чтобы он не влиял
             el.classList.remove('is-first-expanded');
         }
     };
 
-    // Инициализация аккордеонов при загрузке DOM
+    // ==================== ИНИЦИАЛИЗАЦИЯ ВСЕГО КОДА ====================
     $(document).ready(function() {
+        // Добавляем стили для аккордеона
+        addAccordionStyles();
+        
+        // Инициализация аккордеонов
         const accordions = document.getElementsByClassName("accordions");
         for (let i = 0; i < accordions.length; i++) {
             Accordion.init(accordions[i]);
@@ -257,29 +358,26 @@
                 });
             }, 250);
         });
-    });
 
-    // Остальной код остается без изменений...
-    // Tabs functionality (.naccs)
-    $(document).on("click", ".naccs .menu div", function() {
-        var numberIndex = $(this).index();
+        // Tabs functionality (.naccs)
+        $(document).on("click", ".naccs .menu div", function() {
+            var numberIndex = $(this).index();
 
-        if (!$(this).is("active")) {
-            $(".naccs .menu div").removeClass("active");
-            $(".naccs ul li").removeClass("active");
+            if (!$(this).is("active")) {
+                $(".naccs .menu div").removeClass("active");
+                $(".naccs ul li").removeClass("active");
 
-            $(this).addClass("active");
-            $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
+                $(this).addClass("active");
+                $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
 
-            var listItemHeight = $(".naccs ul")
-                .find("li:eq(" + numberIndex + ")")
-                .innerHeight();
-            $(".naccs ul").height(listItemHeight + "px");
-        }
-    });
+                var listItemHeight = $(".naccs ul")
+                    .find("li:eq(" + numberIndex + ")")
+                    .innerHeight();
+                $(".naccs ul").height(listItemHeight + "px");
+            }
+        });
 
-    // Owl Carousel с проверкой
-    $(document).ready(function() {
+        // Owl Carousel
         if (typeof $.fn.owlCarousel !== 'undefined' && $('.owl-features').length) {
             $('.owl-features').owlCarousel({
                 center: true,
@@ -297,37 +395,35 @@
                 }
             });
         }
-    });
 
-    // Menu Dropdown Toggle
-    if($('.menu-trigger').length){
-        $(".menu-trigger").on('click', function() {    
-            $(this).toggleClass('active');
-            $('.header-area .nav').slideToggle(200);
-        });
-    }
-
-    // Smooth scroll для якорных ссылок
-    $('.scroll-to-section a[href*=\\#]:not([href=\\#])').on('click', function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-            if (target.length) {
-                var width = $(window).width();
-                if(width < 991) {
-                    $('.menu-trigger').removeClass('active');
-                    $('.header-area .nav').slideUp(200);    
-                }                
-                $('html,body').animate({
-                    scrollTop: (target.offset().top) - 80
-                }, 700);
-                return false;
-            }
+        // Menu Dropdown Toggle
+        if($('.menu-trigger').length){
+            $(".menu-trigger").on('click', function() {    
+                $(this).toggleClass('active');
+                $('.header-area .nav').slideToggle(200);
+            });
         }
-    });
 
-    // Smooth scroll с активным состоянием
-    $(document).ready(function () {
+        // Smooth scroll для якорных ссылок
+        $('.scroll-to-section a[href*=\\#]:not([href=\\#])').on('click', function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                if (target.length) {
+                    var width = $(window).width();
+                    if(width < 991) {
+                        $('.menu-trigger').removeClass('active');
+                        $('.header-area .nav').slideUp(200);    
+                    }                
+                    $('html,body').animate({
+                        scrollTop: (target.offset().top) - 80
+                    }, 700);
+                    return false;
+                }
+            }
+        });
+
+        // Smooth scroll с активным состоянием
         $(document).on("scroll", onScroll);
         
         $('.scroll-to-section a[href^="#"]').on('click', function (e) {
@@ -348,63 +444,8 @@
                 $(document).on("scroll", onScroll);
             });
         });
-    });
 
-    // Update active nav link on scroll
-    function onScroll(event){
-        var scrollPos = $(document).scrollTop();
-        $('.nav a').each(function () {
-            var currLink = $(this);
-            var refElement = $(currLink.attr("href"));
-            if (refElement.length && refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-                $('.nav ul li a').removeClass("active");
-                currLink.addClass("active");
-            }
-            else{
-                currLink.removeClass("active");
-            }
-        });
-    }
-
-    // Dropdown меню
-    const dropdownOpener = $('.main-nav ul.nav .has-sub > a');
-
-    if (dropdownOpener.length) {
-        dropdownOpener.each(function () {
-            var _this = $(this);
-
-            _this.on('tap click', function (e) {
-                var thisItemParent = _this.parent('li'),
-                    thisItemParentSiblingsWithDrop = thisItemParent.siblings('.has-sub');
-
-                if (thisItemParent.hasClass('has-sub')) {
-                    var submenu = thisItemParent.find('> ul.sub-menu');
-
-                    if (submenu.is(':visible')) {
-                        submenu.slideUp(450, 'easeInOutQuad');
-                        thisItemParent.removeClass('is-open-sub');
-                    } else {
-                        thisItemParent.addClass('is-open-sub');
-
-                        if (thisItemParentSiblingsWithDrop.length === 0) {
-                            thisItemParent.find('.sub-menu').slideUp(400, 'easeInOutQuad', function () {
-                                submenu.slideDown(250, 'easeInOutQuad');
-                            });
-                        } else {
-                            thisItemParent.siblings().removeClass('is-open-sub').find('.sub-menu').slideUp(250, 'easeInOutQuad', function () {
-                                submenu.slideDown(250, 'easeInOutQuad');
-                            });
-                        }
-                    }
-                }
-
-                e.preventDefault();
-            });
-        });
-    }
-
-    // Обработка формы
-    $(document).ready(function() {
+        // Обработка формы
         const contactForm = document.getElementById('free-quote');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
@@ -423,6 +464,56 @@
                 contactForm.reset();
             });
         }
+
+        // Dropdown меню
+        const dropdownOpener = $('.main-nav ul.nav .has-sub > a');
+        if (dropdownOpener.length) {
+            dropdownOpener.each(function () {
+                var _this = $(this);
+                _this.on('tap click', function (e) {
+                    var thisItemParent = _this.parent('li'),
+                        thisItemParentSiblingsWithDrop = thisItemParent.siblings('.has-sub');
+
+                    if (thisItemParent.hasClass('has-sub')) {
+                        var submenu = thisItemParent.find('> ul.sub-menu');
+
+                        if (submenu.is(':visible')) {
+                            submenu.slideUp(450, 'easeInOutQuad');
+                            thisItemParent.removeClass('is-open-sub');
+                        } else {
+                            thisItemParent.addClass('is-open-sub');
+
+                            if (thisItemParentSiblingsWithDrop.length === 0) {
+                                thisItemParent.find('.sub-menu').slideUp(400, 'easeInOutQuad', function () {
+                                    submenu.slideDown(250, 'easeInOutQuad');
+                                });
+                            } else {
+                                thisItemParent.siblings().removeClass('is-open-sub').find('.sub-menu').slideUp(250, 'easeInOutQuad', function () {
+                                    submenu.slideDown(250, 'easeInOutQuad');
+                                });
+                            }
+                        }
+                    }
+                    e.preventDefault();
+                });
+            });
+        }
     });
+
+    // Update active nav link on scroll
+    function onScroll(event){
+        var scrollPos = $(document).scrollTop();
+        $('.nav a').each(function () {
+            var currLink = $(this);
+            var refElement = $(currLink.attr("href"));
+            if (refElement.length && refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+                $('.nav ul li a').removeClass("active");
+                currLink.addClass("active");
+            }
+            else{
+                currLink.removeClass("active");
+            }
+        });
+    }
 
 })(window.jQuery);
